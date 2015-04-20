@@ -58,10 +58,10 @@ c5t=melcepst(testing_data5,Fs5t)';
 cp=melcepst(testing_datap,Fspt)';
 
 %-------------------------------------------------------------------------
-%TODO: afficher la durée des fichiers d'entraînement (en millisecondes) ainsi 
+%TODO: afficher la durï¿½e des fichiers d'entraï¿½nement (en millisecondes) ainsi 
 %que le nombre de vecteurs acoustiques qui en sont extraits (nombre de colonnes de la matrice ci_i)
 
-% Periode d'un échantillons des fichiers
+% Periode d'un ï¿½chantillons des fichiers
 T1_1 = 1/Fs1_1;
 T1_2 = 1/Fs1_2;
 T1_3 = 1/Fs1_3;
@@ -101,11 +101,11 @@ t_wav3 = (t_wav_3_1 + t_wav_3_2 + t_wav_3_3) / 3 ;
 t_wav4 = (t_wav_4_1 + t_wav_4_2 + t_wav_4_3) / 3 ;
 t_wav5 = (t_wav_5_1 + t_wav_5_2 + t_wav_5_3) / 3 ;
 
-disp(['Temps moyen pour chiffre 1 = 1t ms' num2str(t_wav1)]);
-disp(['Temps moyen pour chiffre 2 = 1t ms' num2str(t_wav2)]);
-disp(['Temps moyen pour chiffre 3 = 1t ms' num2str(t_wav3)]);
-disp(['Temps moyen pour chiffre 4 = 1t ms' num2str(t_wav4)]);
-disp(['Temps moyen pour chiffre 5 = 1t ms' num2str(t_wav5)]);
+disp(['Temps moyen pour chiffre 1 = ' num2str(t_wav1) ' ms']);
+disp(['Temps moyen pour chiffre 2 = ' num2str(t_wav2) ' ms']);
+disp(['Temps moyen pour chiffre 3 = ' num2str(t_wav3) ' ms']);
+disp(['Temps moyen pour chiffre 4 = ' num2str(t_wav4) ' ms']);
+disp(['Temps moyen pour chiffre 5 = ' num2str(t_wav5) ' ms']);
 
 % Calcul du nombre de vecteur acoustique moyen
 c1 = (size(c1_1,2) + size(c1_2,2) + size(c1_3,2)) / 3 ;
@@ -114,11 +114,11 @@ c3 = (size(c3_1,2) + size(c3_2,2) + size(c3_3,2)) / 3 ;
 c4 = (size(c4_1,2) + size(c4_2,2) + size(c4_3,2)) / 3 ;
 c5 = (size(c5_1,2) + size(c5_2,2) + size(c5_3,2)) / 3 ;
 
-disp(['Nombre de vecteurs acoustiques pour chiffre 1 = 1t' num2str(c1)]);
-disp(['Nombre de vecteurs acoustiques pour chiffre 2 = 1t' num2str(c2)]);
-disp(['Nombre de vecteurs acoustiques pour chiffre 3 = 1t' num2str(c3)]);
-disp(['Nombre de vecteurs acoustiques pour chiffre 4 = 1t' num2str(c4)]);
-disp(['Nombre de vecteurs acoustiques pour chiffre 5 = 1t' num2str(c5)]);
+disp(['Nombre de vecteurs acoustiques pour chiffre 1 = ' num2str(c1)]);
+disp(['Nombre de vecteurs acoustiques pour chiffre 2 = ' num2str(c2)]);
+disp(['Nombre de vecteurs acoustiques pour chiffre 3 = ' num2str(c3)]);
+disp(['Nombre de vecteurs acoustiques pour chiffre 4 = ' num2str(c4)]);
+disp(['Nombre de vecteurs acoustiques pour chiffre 5 = ' num2str(c5)]);
 
 
 %-------------------------------------------------------------------------
@@ -126,7 +126,7 @@ disp(['Nombre de vecteurs acoustiques pour chiffre 5 = 1t' num2str(c5)]);
 
 disp ('-------- training model for 1 ----------');
 %-------------------------------------------------------------------------
-%TODO : utiser la bonne valeur de N pour le training de vos modèles!!
+%TODO : utiser la bonne valeur de N pour le training de vos modï¿½les!!
 %N=5
 N=c1; 
 A=inittran(N); [MI,SIGMA]=initemis(c1_1,N); 
