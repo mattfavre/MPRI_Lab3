@@ -61,6 +61,64 @@ cp=melcepst(testing_datap,Fspt)';
 %TODO: afficher la durée des fichiers d'entraînement (en millisecondes) ainsi 
 %que le nombre de vecteurs acoustiques qui en sont extraits (nombre de colonnes de la matrice ci_i)
 
+% Periode d'un échantillons des fichiers
+T1_1 = 1/Fs1_1;
+T1_2 = 1/Fs1_2;
+T1_3 = 1/Fs1_3;
+T2_1 = 1/Fs2_1;
+T2_2 = 1/Fs2_2;
+T2_3 = 1/Fs2_3;
+T3_1 = 1/Fs3_1;
+T3_2 = 1/Fs3_2;
+T3_3 = 1/Fs3_3;
+T4_1 = 1/Fs4_1;
+T4_2 = 1/Fs4_2;
+T4_3 = 1/Fs4_3;
+T5_1 = 1/Fs5_1;
+T5_2 = 1/Fs5_2;
+T5_3 = 1/Fs5_3;
+
+% Calcul du temps moyen en miliseconde
+t_wav_1_1 = length(training_data1_1) * T1_1 * 1000 ; % (Nb echantillons * periode * 1000) ms
+t_wav_1_2 = length(training_data1_2) * T1_2 * 1000 ; % (Nb echantillons * periode * 1000) ms
+t_wav_1_3 = length(training_data1_3) * T1_3 * 1000 ; % (Nb echantillons * periode * 1000) ms
+t_wav_2_1 = length(training_data2_1) * T2_1 * 1000 ; % (Nb echantillons * periode * 1000) ms
+t_wav_2_2 = length(training_data2_2) * T2_2 * 1000 ; % (Nb echantillons * periode * 1000) ms
+t_wav_2_3 = length(training_data2_3) * T2_3 * 1000 ; % (Nb echantillons * periode * 1000) ms
+t_wav_3_1 = length(training_data3_1) * T3_1 * 1000 ; % (Nb echantillons * periode * 1000) ms
+t_wav_3_2 = length(training_data3_2) * T3_2 * 1000 ; % (Nb echantillons * periode * 1000) ms
+t_wav_3_3 = length(training_data3_3) * T3_3 * 1000 ; % (Nb echantillons * periode * 1000) ms
+t_wav_4_1 = length(training_data4_1) * T4_1 * 1000 ; % (Nb echantillons * periode * 1000) ms
+t_wav_4_2 = length(training_data4_2) * T4_2 * 1000 ; % (Nb echantillons * periode * 1000) ms
+t_wav_4_3 = length(training_data4_3) * T4_3 * 1000 ; % (Nb echantillons * periode * 1000) ms
+t_wav_5_1 = length(training_data5_1) * T5_1 * 1000 ; % (Nb echantillons * periode * 1000) ms
+t_wav_5_2 = length(training_data5_2) * T5_2 * 1000 ; % (Nb echantillons * periode * 1000) ms
+t_wav_5_3 = length(training_data5_3) * T5_3 * 1000 ; % (Nb echantillons * periode * 1000) ms
+
+t_wav1 = (t_wav_1_1 + t_wav_1_2 + t_wav_1_3) / 3 ;
+t_wav2 = (t_wav_2_1 + t_wav_2_2 + t_wav_2_3) / 3 ;
+t_wav3 = (t_wav_3_1 + t_wav_3_2 + t_wav_3_3) / 3 ;
+t_wav4 = (t_wav_4_1 + t_wav_4_2 + t_wav_4_3) / 3 ;
+t_wav5 = (t_wav_5_1 + t_wav_5_2 + t_wav_5_3) / 3 ;
+
+disp(['Temps moyen pour chiffre 1 = 1t ms' num2str(t_wav1)]);
+disp(['Temps moyen pour chiffre 2 = 1t ms' num2str(t_wav2)]);
+disp(['Temps moyen pour chiffre 3 = 1t ms' num2str(t_wav3)]);
+disp(['Temps moyen pour chiffre 4 = 1t ms' num2str(t_wav4)]);
+disp(['Temps moyen pour chiffre 5 = 1t ms' num2str(t_wav5)]);
+
+% Calcul du nombre de vecteur acoustique moyen
+c1 = (size(c1_1,2) + size(c1_2,2) + size(c1_3,2)) / 3 ;
+c2 = (size(c2_1,2) + size(c2_2,2) + size(c2_3,2)) / 3 ;
+c3 = (size(c3_1,2) + size(c3_2,2) + size(c3_3,2)) / 3 ;
+c4 = (size(c4_1,2) + size(c4_2,2) + size(c4_3,2)) / 3 ;
+c5 = (size(c5_1,2) + size(c5_2,2) + size(c5_3,2)) / 3 ;
+
+disp(['Nombre de vecteurs acoustiques pour chiffre 1 = 1t' num2str(c1)]);
+disp(['Nombre de vecteurs acoustiques pour chiffre 2 = 1t' num2str(c2)]);
+disp(['Nombre de vecteurs acoustiques pour chiffre 3 = 1t' num2str(c3)]);
+disp(['Nombre de vecteurs acoustiques pour chiffre 4 = 1t' num2str(c4)]);
+disp(['Nombre de vecteurs acoustiques pour chiffre 5 = 1t' num2str(c5)]);
 
 
 %-------------------------------------------------------------------------
@@ -69,58 +127,68 @@ cp=melcepst(testing_datap,Fspt)';
 disp ('-------- training model for 1 ----------');
 %-------------------------------------------------------------------------
 %TODO : utiser la bonne valeur de N pour le training de vos modèles!!
-
-N=5; A=inittran(N); [MI,SIGMA]=initemis(c1_1,N); 
+%N=5
+N=c1; 
+A=inittran(N); [MI,SIGMA]=initemis(c1_1,N); 
 [NEWA, NEWMI, NEWSIGMA, Ptot] = vit_reestim (c1_1,c1_2,c1_3, A, MI, SIGMA);
-Ptot
+disp(['Ptot pour chiffre 1 = 1t' num2str(Ptot)]);
 for iter=1:5
    [NEWA,NEWMI,NEWSIGMA,Ptot] = vit_reestim (c1_1,c1_2,c1_3, NEWA, NEWMI, SIGMA);  
-   Ptot
+   disp(['Ptot pour chiffre 1 = 1t' num2str(Ptot)]);
+   %Ptot
 end
 A1=NEWA; MI1=NEWMI; SIGMA1=SIGMA;
 
 disp ('-------- training model for 2 ----------');
-N=5; A=inittran(N); [MI,SIGMA]=initemis(c2_1,N); 
+N=c2; 
+A=inittran(N); [MI,SIGMA]=initemis(c2_1,N); 
 [NEWA, NEWMI, NEWSIGMA, Ptot] = vit_reestim (c2_1,c2_2,c2_3, A, MI, SIGMA);
-Ptot
+disp(['Ptot pour chiffre 2 = 1t' num2str(Ptot)]);
 for iter=1:5  
    [NEWA,NEWMI,NEWSIGMA,Ptot] = vit_reestim (c2_1,c2_2,c2_3, NEWA, NEWMI, SIGMA);
-   Ptot
+   disp(['Ptot pour chiffre 2 = 1t' num2str(Ptot)]);
+   %Ptot
 end
 A2=NEWA; MI2=NEWMI; SIGMA2=SIGMA;
 
 disp ('-------- training model for 3 ----------');
-N=5; A=inittran(N); [MI,SIGMA]=initemis(c3_1,N); 
+N=c3; 
+A=inittran(N); [MI,SIGMA]=initemis(c3_1,N); 
 [NEWA, NEWMI, NEWSIGMA, Ptot] = vit_reestim (c3_1,c3_2,c3_3, A, MI, SIGMA);
-Ptot
+disp(['Ptot pour chiffre 3 = 1t' num2str(Ptot)]);
 for iter=1:5  
    [NEWA,NEWMI,NEWSIGMA,Ptot] = vit_reestim (c3_1,c3_2,c3_3, NEWA, NEWMI, SIGMA);  
-   Ptot
+   disp(['Ptot pour chiffre 3 = 1t' num2str(Ptot)]);
+   %Ptot
 end
 A3=NEWA; MI3=NEWMI; SIGMA3=SIGMA;
 
 disp ('-------- training model for 4 ----------');
-N=5; A=inittran(N); [MI,SIGMA]=initemis(c4_1,N); 
+N=c4; 
+A=inittran(N); [MI,SIGMA]=initemis(c4_1,N); 
 [NEWA, NEWMI, NEWSIGMA, Ptot] = vit_reestim (c4_1,c4_2,c4_3, A, MI, SIGMA);
-Ptot
+disp(['Ptot pour chiffre 4 = 1t' num2str(Ptot)]);
 for iter=1:5
    [NEWA,NEWMI,NEWSIGMA,Ptot] = vit_reestim (c4_1,c4_2,c4_3, NEWA, NEWMI, SIGMA);  
-   Ptot
+   disp(['Ptot pour chiffre 4 = 1t' num2str(Ptot)]);
+   %Ptot
 end
 A4=NEWA; MI4=NEWMI; SIGMA4=SIGMA;
 
 disp ('-------- training model for 5 ----------');
-N=5; A=inittran(N); [MI,SIGMA]=initemis(c5_1,N); 
+N=c5; 
+A=inittran(N); [MI,SIGMA]=initemis(c5_1,N); 
 [NEWA, NEWMI, NEWSIGMA, Ptot] = vit_reestim (c5_1,c5_2,c5_3, A, MI, SIGMA);
-Ptot
+disp(['Ptot pour chiffre 5 = 1t' num2str(Ptot)]);
 for iter=1:5
    [NEWA,NEWMI,NEWSIGMA,Ptot] = vit_reestim (c5_1,c5_2,c5_3, NEWA, NEWMI, SIGMA);  
-   Ptot
+   disp(['Ptot pour chiffre 5 = 1t' num2str(Ptot)]);
+   %Ptot
 end
 A5=NEWA; MI5=NEWMI; SIGMA5=SIGMA;
 
 
-%disp ('====== now recognizing  =======') 
+disp ('====== now recognizing  =======') 
 %format short e % this is to see correctly all elements of a vector
 
 Pvit11 = viterbi_log (c1t, A1, MI1, SIGMA1);
