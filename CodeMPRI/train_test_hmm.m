@@ -230,3 +230,12 @@ Pvit14 = viterbi_log (c5t, A4, MI4, SIGMA4);
 Pvit15 = viterbi_log (c5t, A5, MI5, SIGMA5);
 h=[Pvit11 Pvit12 Pvit13 Pvit14 Pvit15]
 [nic,ii]=max(h); disp(['testing for 5t, the best model is ' num2str(ii) ]);
+
+
+Pvit11 = viterbi_log (cp, A1, MI1, SIGMA1);
+Pvit12 = viterbi_log (cp, A2, MI2, SIGMA2);
+Pvit13 = viterbi_log (cp, A3, MI3, SIGMA3);
+Pvit14 = viterbi_log (cp, A4, MI4, SIGMA4);
+Pvit15 = viterbi_log (cp, A5, MI5, SIGMA5);
+h=[Pvit11 Pvit12 Pvit13 Pvit14 Pvit15]
+[nic,ii]=max(h); disp(['testing for peu, the best model is ' num2str(ii) ]);
