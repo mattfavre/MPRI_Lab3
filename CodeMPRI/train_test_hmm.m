@@ -4,6 +4,7 @@
 disp ('-------- reading signal and computing cepstra ----------');
 
 %-----------reading in the training data----------------------------------
+
 [training_data1_1,Fs1_1,bits1]=wavread('Matthieu/1_1.wav');
 [training_data1_2,Fs1_2,bits1]=wavread('Matthieu/1_2.wav');
 [training_data1_3,Fs1_3,bits1]=wavread('Matthieu/1_3.wav');
@@ -20,6 +21,7 @@ disp ('-------- reading signal and computing cepstra ----------');
 [training_data5_2,Fs5_2,bits5]=wavread('Matthieu/5_2.wav');
 [training_data5_3,Fs5_3,bits5]=wavread('Matthieu/5_3.wav');
 
+
 [testing_data1,Fs1t,bits1t]=wavread('Matthieu/1t.wav');
 [testing_data2,Fs2t,bits2t]=wavread('Matthieu/2t.wav');
 [testing_data3,Fs3t,bits3t]=wavread('Matthieu/3t.wav');
@@ -27,6 +29,7 @@ disp ('-------- reading signal and computing cepstra ----------');
 [testing_data5,Fs5t,bits5t]=wavread('Matthieu/5t.wav');
 
 [testing_datap,Fspt,bitspt]=wavread('Matthieu/Peut.wav');
+
 
 %-------------feature extraction, 12 coeff. ------------------------------------------
 c1_1=melcepst(training_data1_1,Fs1_1)';
@@ -196,7 +199,7 @@ Pvit12 = viterbi_log (c1t, A2, MI2, SIGMA2);
 Pvit13 = viterbi_log (c1t, A3, MI3, SIGMA3);
 Pvit14 = viterbi_log (c1t, A4, MI4, SIGMA4);
 Pvit15 = viterbi_log (c1t, A5, MI5, SIGMA5);
-h=[Pvit11 Pvit12 Pvit13 Pvit14 Pvit15]
+h1=[Pvit11 Pvit12 Pvit13 Pvit14 Pvit15]
 [nic,ii]=max(h); disp(['testing for 1t, the best model is ' num2str(ii) ]);
 
 Pvit11 = viterbi_log (c2t, A1, MI1, SIGMA1);
@@ -204,7 +207,7 @@ Pvit12 = viterbi_log (c2t, A2, MI2, SIGMA2);
 Pvit13 = viterbi_log (c2t, A3, MI3, SIGMA3);
 Pvit14 = viterbi_log (c2t, A4, MI4, SIGMA4);
 Pvit15 = viterbi_log (c2t, A5, MI5, SIGMA5);
-h=[Pvit11 Pvit12 Pvit13 Pvit14 Pvit15]
+h2=[Pvit11 Pvit12 Pvit13 Pvit14 Pvit15]
 [nic,ii]=max(h); disp(['testing for 2t, the best model is ' num2str(ii) ]);
 
 Pvit11 = viterbi_log (c3t, A1, MI1, SIGMA1);
@@ -212,7 +215,7 @@ Pvit12 = viterbi_log (c3t, A2, MI2, SIGMA2);
 Pvit13 = viterbi_log (c3t, A3, MI3, SIGMA3);
 Pvit14 = viterbi_log (c3t, A4, MI4, SIGMA4);
 Pvit15 = viterbi_log (c3t, A5, MI5, SIGMA5);
-h=[Pvit11 Pvit12 Pvit13 Pvit14 Pvit15]
+h3=[Pvit11 Pvit12 Pvit13 Pvit14 Pvit15]
 [nic,ii]=max(h); disp(['testing for 3t, the best model is ' num2str(ii) ]);
 
 Pvit11 = viterbi_log (c4t, A1, MI1, SIGMA1);
@@ -220,7 +223,7 @@ Pvit12 = viterbi_log (c4t, A2, MI2, SIGMA2);
 Pvit13 = viterbi_log (c4t, A3, MI3, SIGMA3);
 Pvit14 = viterbi_log (c4t, A4, MI4, SIGMA4);
 Pvit15 = viterbi_log (c4t, A5, MI5, SIGMA5);
-h=[Pvit11 Pvit12 Pvit13 Pvit14 Pvit15]
+h4=[Pvit11 Pvit12 Pvit13 Pvit14 Pvit15]
 [nic,ii]=max(h); disp(['testing for 4t, the best model is ' num2str(ii) ]);
 
 Pvit11 = viterbi_log (c5t, A1, MI1, SIGMA1);
@@ -228,5 +231,76 @@ Pvit12 = viterbi_log (c5t, A2, MI2, SIGMA2);
 Pvit13 = viterbi_log (c5t, A3, MI3, SIGMA3);
 Pvit14 = viterbi_log (c5t, A4, MI4, SIGMA4);
 Pvit15 = viterbi_log (c5t, A5, MI5, SIGMA5);
-h=[Pvit11 Pvit12 Pvit13 Pvit14 Pvit15]
+h5=[Pvit11 Pvit12 Pvit13 Pvit14 Pvit15]
 [nic,ii]=max(h); disp(['testing for 5t, the best model is ' num2str(ii) ]);
+
+
+Pvit11 = viterbi_log (cp, A1, MI1, SIGMA1);
+Pvit12 = viterbi_log (cp, A2, MI2, SIGMA2);
+Pvit13 = viterbi_log (cp, A3, MI3, SIGMA3);
+Pvit14 = viterbi_log (cp, A4, MI4, SIGMA4);
+Pvit15 = viterbi_log (cp, A5, MI5, SIGMA5);
+hp=[Pvit11 Pvit12 Pvit13 Pvit14 Pvit15]
+[nic,ii]=max(h); disp(['testing for peu, the best model is ' num2str(ii) ]);
+
+
+xp = [1:1:5];
+
+
+figure(1);
+subplot(6,1,1)
+plot(xp,h1);
+title 'Probabilités de reconnaissances';
+xlabel 'Chiffre';
+ylabel 'Probabilité';
+legend('Chiffre 1');
+
+subplot(6,1,2)
+plot(xp,h2);
+title 'Probabilités de reconnaissances';
+xlabel 'Chiffre';
+ylabel 'Probabilité';
+legend('Chiffre 2');
+
+subplot(6,1,3)
+plot(xp,h3);
+title 'Probabilités de reconnaissances';
+xlabel 'Chiffre';
+ylabel 'Probabilité';
+legend('Chiffre 3');
+
+subplot(6,1,4)
+plot(xp,h4);
+title 'Probabilités de reconnaissances';
+xlabel 'Chiffre';
+ylabel 'Probabilité';
+legend('Chiffre 4');
+
+subplot(6,1,5)
+plot(xp,h5);
+title 'Probabilités de reconnaissances';
+xlabel 'Chiffre';
+ylabel 'Probabilité';
+legend('Chiffre 5');
+
+subplot(6,1,6)
+plot(xp,hp);
+title 'Probabilités de reconnaissances';
+xlabel 'Chiffre';
+ylabel 'Probabilité';
+legend('Peu');
+
+figure(2);
+pl = plot(xp,h1,xp,h2,xp,h3,xp,h4,xp,h5,xp,hp);
+set(pl(1),'LineWidth',2);
+set(pl(2),'LineWidth',2);
+set(pl(3),'LineWidth',2);
+set(pl(4),'LineWidth',2);
+set(pl(5),'LineWidth',2);
+set(pl(6),'LineWidth',2);
+
+title 'Probabilités de reconnaissances';
+xlabel 'Chiffre';
+ylabel 'Probabilité';
+legend('Chiffre 1','Chiffre 2','Chiffre 3','Chiffre 4','Chiffre 5','Peu')
+
