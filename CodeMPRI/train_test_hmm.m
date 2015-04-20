@@ -128,7 +128,7 @@ disp ('-------- training model for 1 ----------');
 %-------------------------------------------------------------------------
 %TODO : utiser la bonne valeur de N pour le training de vos mod�les!!
 %N=5
-N=c1; 
+N=5; 
 A=inittran(N); [MI,SIGMA]=initemis(c1_1,N); 
 [NEWA, NEWMI, NEWSIGMA, Ptot] = vit_reestim (c1_1,c1_2,c1_3, A, MI, SIGMA);
 disp(['Ptot pour chiffre 1 = 1t' num2str(Ptot)]);
@@ -140,7 +140,7 @@ end
 A1=NEWA; MI1=NEWMI; SIGMA1=SIGMA;
 
 disp ('-------- training model for 2 ----------');
-N=c2; 
+N=6; 
 A=inittran(N); [MI,SIGMA]=initemis(c2_1,N); 
 [NEWA, NEWMI, NEWSIGMA, Ptot] = vit_reestim (c2_1,c2_2,c2_3, A, MI, SIGMA);
 disp(['Ptot pour chiffre 2 = 1t' num2str(Ptot)]);
@@ -152,7 +152,7 @@ end
 A2=NEWA; MI2=NEWMI; SIGMA2=SIGMA;
 
 disp ('-------- training model for 3 ----------');
-N=c3; 
+N=8; 
 A=inittran(N); [MI,SIGMA]=initemis(c3_1,N); 
 [NEWA, NEWMI, NEWSIGMA, Ptot] = vit_reestim (c3_1,c3_2,c3_3, A, MI, SIGMA);
 disp(['Ptot pour chiffre 3 = 1t' num2str(Ptot)]);
@@ -164,7 +164,7 @@ end
 A3=NEWA; MI3=NEWMI; SIGMA3=SIGMA;
 
 disp ('-------- training model for 4 ----------');
-N=c4; 
+N=8; 
 A=inittran(N); [MI,SIGMA]=initemis(c4_1,N); 
 [NEWA, NEWMI, NEWSIGMA, Ptot] = vit_reestim (c4_1,c4_2,c4_3, A, MI, SIGMA);
 disp(['Ptot pour chiffre 4 = 1t' num2str(Ptot)]);
@@ -176,7 +176,7 @@ end
 A4=NEWA; MI4=NEWMI; SIGMA4=SIGMA;
 
 disp ('-------- training model for 5 ----------');
-N=c5; 
+N=7; 
 A=inittran(N); [MI,SIGMA]=initemis(c5_1,N); 
 [NEWA, NEWMI, NEWSIGMA, Ptot] = vit_reestim (c5_1,c5_2,c5_3, A, MI, SIGMA);
 disp(['Ptot pour chiffre 5 = 1t' num2str(Ptot)]);
