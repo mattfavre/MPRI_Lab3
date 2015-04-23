@@ -22,11 +22,11 @@ disp ('-------- reading signal and computing cepstra ----------');
 [training_data5_3,Fs5_3,bits5]=wavread('Matthieu/5_3.wav');
 
 
-[testing_data1,Fs1t,bits1t]=wavread('Matthieu/1t.wav');
-[testing_data2,Fs2t,bits2t]=wavread('Matthieu/2t.wav');
-[testing_data3,Fs3t,bits3t]=wavread('Matthieu/3t.wav');
-[testing_data4,Fs4t,bits4t]=wavread('Matthieu/4t.wav');
-[testing_data5,Fs5t,bits5t]=wavread('Matthieu/5t.wav');
+[testing_data1,Fs1t,bits1t]=wavread('Michael/1t.wav');
+[testing_data2,Fs2t,bits2t]=wavread('Michael/2t.wav');
+[testing_data3,Fs3t,bits3t]=wavread('Michael/3t.wav');
+[testing_data4,Fs4t,bits4t]=wavread('Michael/4t.wav');
+[testing_data5,Fs5t,bits5t]=wavread('Michael/5t.wav');
 
 [testing_datap,Fspt,bitspt]=wavread('Matthieu/Peut.wav');
 
@@ -200,7 +200,7 @@ Pvit13 = viterbi_log (c1t, A3, MI3, SIGMA3);
 Pvit14 = viterbi_log (c1t, A4, MI4, SIGMA4);
 Pvit15 = viterbi_log (c1t, A5, MI5, SIGMA5);
 h1=[Pvit11 Pvit12 Pvit13 Pvit14 Pvit15]
-[nic,ii]=max(h); disp(['testing for 1t, the best model is ' num2str(ii) ]);
+[nic,ii]=max(h1); disp(['testing for 1t, the best model is ' num2str(ii) ]);
 
 Pvit11 = viterbi_log (c2t, A1, MI1, SIGMA1);
 Pvit12 = viterbi_log (c2t, A2, MI2, SIGMA2);
@@ -208,7 +208,7 @@ Pvit13 = viterbi_log (c2t, A3, MI3, SIGMA3);
 Pvit14 = viterbi_log (c2t, A4, MI4, SIGMA4);
 Pvit15 = viterbi_log (c2t, A5, MI5, SIGMA5);
 h2=[Pvit11 Pvit12 Pvit13 Pvit14 Pvit15]
-[nic,ii]=max(h); disp(['testing for 2t, the best model is ' num2str(ii) ]);
+[nic,ii]=max(h2); disp(['testing for 2t, the best model is ' num2str(ii) ]);
 
 Pvit11 = viterbi_log (c3t, A1, MI1, SIGMA1);
 Pvit12 = viterbi_log (c3t, A2, MI2, SIGMA2);
@@ -216,7 +216,7 @@ Pvit13 = viterbi_log (c3t, A3, MI3, SIGMA3);
 Pvit14 = viterbi_log (c3t, A4, MI4, SIGMA4);
 Pvit15 = viterbi_log (c3t, A5, MI5, SIGMA5);
 h3=[Pvit11 Pvit12 Pvit13 Pvit14 Pvit15]
-[nic,ii]=max(h); disp(['testing for 3t, the best model is ' num2str(ii) ]);
+[nic,ii]=max(h3); disp(['testing for 3t, the best model is ' num2str(ii) ]);
 
 Pvit11 = viterbi_log (c4t, A1, MI1, SIGMA1);
 Pvit12 = viterbi_log (c4t, A2, MI2, SIGMA2);
@@ -224,7 +224,7 @@ Pvit13 = viterbi_log (c4t, A3, MI3, SIGMA3);
 Pvit14 = viterbi_log (c4t, A4, MI4, SIGMA4);
 Pvit15 = viterbi_log (c4t, A5, MI5, SIGMA5);
 h4=[Pvit11 Pvit12 Pvit13 Pvit14 Pvit15]
-[nic,ii]=max(h); disp(['testing for 4t, the best model is ' num2str(ii) ]);
+[nic,ii]=max(h4); disp(['testing for 4t, the best model is ' num2str(ii) ]);
 
 Pvit11 = viterbi_log (c5t, A1, MI1, SIGMA1);
 Pvit12 = viterbi_log (c5t, A2, MI2, SIGMA2);
@@ -232,7 +232,7 @@ Pvit13 = viterbi_log (c5t, A3, MI3, SIGMA3);
 Pvit14 = viterbi_log (c5t, A4, MI4, SIGMA4);
 Pvit15 = viterbi_log (c5t, A5, MI5, SIGMA5);
 h5=[Pvit11 Pvit12 Pvit13 Pvit14 Pvit15]
-[nic,ii]=max(h); disp(['testing for 5t, the best model is ' num2str(ii) ]);
+[nic,ii]=max(h5); disp(['testing for 5t, the best model is ' num2str(ii) ]);
 
 
 Pvit11 = viterbi_log (cp, A1, MI1, SIGMA1);
@@ -241,7 +241,7 @@ Pvit13 = viterbi_log (cp, A3, MI3, SIGMA3);
 Pvit14 = viterbi_log (cp, A4, MI4, SIGMA4);
 Pvit15 = viterbi_log (cp, A5, MI5, SIGMA5);
 hp=[Pvit11 Pvit12 Pvit13 Pvit14 Pvit15]
-[nic,ii]=max(h); disp(['testing for peu, the best model is ' num2str(ii) ]);
+[nic,ii]=max(hp); disp(['testing for peu, the best model is ' num2str(ii) ]);
 
 
 xp = [1:1:5];
